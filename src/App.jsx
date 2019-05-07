@@ -37,17 +37,29 @@ class App extends Component {
       this.setState({messages: messages})
     }, 3000);
   }
-  
-  render() {
-    // more code here..
+
+  addNewMessage = (event) => {
+    if(event.key === 'Enter') {
+      
+      let newMessage = {
+        id: this.state.messages.length + 1,
+        username: this.state.currentUser.name,
+        content: event.target.value
+    }
+    const messages = this.state.messages.concat(newMessage)
+    this.setState({messages: messages})
   }
+}
+  //render() {
+    // more code here..
+  //}
   render() {
     return (
       <div>
         <nav className="navbar">
         <a href="/" className="navbar-brand">Chatty</a>
       </nav>
-      <ChatBar currentUser={this.state.currentUser.name}/>
+      <ChatBar currentUser={this.state.currentUser.name} addNewMessage={this.addNewMessage}/>
       <MessageList messages={this.state.messages}/>
       </div>
     );
