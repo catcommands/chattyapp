@@ -23,10 +23,13 @@ class App extends Component {
     }
   ]
     }
+    this.socket = new WebSocket("ws://localhost:3001");
   }
-
   componentDidMount() {
-    const socket = new WebSocket("ws://localhost:3001");
+    this.socket.onopen = () => {
+      console.log('Client connected');
+    };
+    //const socket = new WebSocket("ws://localhost:3001");
     console.log("componentDidMount <App />");
     setTimeout(() => {
       console.log("Simulating incoming message");
@@ -45,13 +48,13 @@ addNewName =(e) => {
 
   addNewMessage = (event) => {
     if(event.key === 'Enter') {
-      
       let newMessage = {
         id: this.state.messages.length + 1,
         username: this.state.currentUser.name,
         content: event.target.value
     }
     const messages = this.state.messages.concat(newMessage)
+    this.socket.send(JSON.stringify(newMessage));
     this.setState({messages: messages})
   }
 }
