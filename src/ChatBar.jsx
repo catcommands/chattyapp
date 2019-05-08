@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 class ChatBar extends Component {
     render() {
-        //const changeUser = evt => {
+    
             //let newValue = evt.target.value;
             //this.props.addNewMessage
         //}
@@ -11,7 +11,9 @@ class ChatBar extends Component {
         <footer className="chatbar">
             <input className="chatbar-username" 
             placeholder="Your Name (Optional)" 
-            defaultValue={this.props.currentUser} />
+            value={this.props.currentUser}
+            onChange={this.props.addNewName}
+            />
             <input className="chatbar-message" 
             placeholder="Type a message and hit ENTER"
             onKeyPress={this.props.addNewMessage}/>

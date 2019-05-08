@@ -37,6 +37,10 @@ class App extends Component {
       this.setState({messages: messages})
     }, 3000);
   }
+addNewName =(e) => {
+  const newname=e.target.value
+  this.setState({currentUser:{name:newname}})
+}
 
   addNewMessage = (event) => {
     if(event.key === 'Enter') {
@@ -59,7 +63,9 @@ class App extends Component {
         <nav className="navbar">
         <a href="/" className="navbar-brand">Chatty</a>
       </nav>
-      <ChatBar currentUser={this.state.currentUser.name} addNewMessage={this.addNewMessage}/>
+      <ChatBar currentUser={this.state.currentUser.name} 
+      addNewMessage={this.addNewMessage}
+      addNewName={this.addNewName}/>
       <MessageList messages={this.state.messages}/>
       </div>
     );
