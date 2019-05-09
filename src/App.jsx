@@ -1,61 +1,53 @@
 import React, {Component} from 'react';
 import ChatBar from './ChatBar.jsx';
 import MessageList from './MessageList.jsx';
-//export default class TimerComponent extends Components {
-
-//}
 
 class App extends Component {
   constructor(props) {
     super(props);
+    this.socket = new WebSocket("ws://localhost:3001");
     this.state = {
       currentUser: {name: "Bob"}, // optional. if currentUser is not defined, it means the user is Anonymous
-  messages: [
-    {
-      id: 1,
-      username: "Bob",
-      content: "Has anyone seen my marbles?",
-    },
-    {
-      id: 2,
-      username: "Anonymous",
-      content: "No, I think you lost them. You lost your marbles Bob. You lost them for good."
+      messages: []
     }
-  ]
-    }
-    this.socket = new WebSocket("ws://localhost:3001");
   }
+
+
   componentDidMount() {
-    this.socket.onopen = () => {
-      console.log('Client connected');
+    console.log('Client connected');
+
+    this.socket.onopen = function (event) {
+      console.log('Connected to server now');
     };
-    //const socket = new WebSocket("ws://localhost:3001");
-    console.log("componentDidMount <App />");
-    setTimeout(() => {
-      console.log("Simulating incoming message");
-      // Add a new message to the list of messages in the data store
-      const newMessage = {id: 3, username: "Michelle", content: "Hello there!"};
-      const messages = this.state.messages.concat(newMessage)
-      // Update the state of the app component.
-      // Calling setState will trigger a call to render() in App and all child components.
-      this.setState({messages: messages})
-    }, 3000);
+
+    this.socket.onmessage = (event) => {
+
+      this.setState({messages: this.state.messages.concat(JSON.parse(event.data).message)})
+      // to change any state in react you always this.setState
+      console.log("Current state", this.state.messages);
+    };
   }
-addNewName =(e) => {
-  const newname=e.target.value
+addNewName =(event) => {
+  const newname=event.target.value
   this.setState({currentUser:{name:newname}})
 }
 
+sendMessagetoServer = (msg) => {
+  this.socket.send(JSON.stringify(msg));
+}
   addNewMessage = (event) => {
     if(event.key === 'Enter') {
-      let newMessage = {
+
+      let msg = {
+        type: 'sendMessage',
         id: this.state.messages.length + 1,
         username: this.state.currentUser.name,
         content: event.target.value
     }
-    const messages = this.state.messages.concat(newMessage)
-    this.socket.send(JSON.stringify(newMessage));
-    this.setState({messages: messages})
+  //const messages = this.state.messages.concat(newMessage)
+    this.sendMessagetoServer({message: msg});
+    console.log("blabla", msg);
+    //this.setState({messages: messages})
   }
 }
   //render() {
