@@ -34,6 +34,14 @@ ws.on('message', function incoming(newMessage) {
         //console.log(parsedMessage);
         console.log(`User ${parsedMessage.username} said ${parsedMessage.content}`);
         parsedMessage.id = uuidV1();
+
+switch (parsedMessage.message.type) {
+case 'postMessage': parsedMessage.message.type = 'newMessage';
+break;
+case 'postNotification': parsedMessage.message.type = 'newNotification';
+break;
+}
+
         wss.broadcast(parsedMessage);
         //console.log('parsedMessage is', parsedMessage);
         //ws.send(JSON.stringify(parsedMessage));
