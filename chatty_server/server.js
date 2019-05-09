@@ -14,40 +14,49 @@ const server = express()
 // Create the WebSockets server
 const wss = new SocketServer({ server });
 
+
 // Set up a callback that will run when a client connects to the server
 // When a client connects they are assigned a socket, represented by
 // the ws parameter in the callback.
 wss.on('connection', (ws) => {
-    console.log('Client connected');
-
-wss.broadcast = function broadcast(data) {
+  wss.broadcast = function broadcast(data) {
     wss.clients.forEach(function each(client) {
+      console.log("client broadcasted to")
         client.send(JSON.stringify(data));
         console.log('Message is being sent to client from server now', data);
-
+  
           // Broadcast to everyone else.
     });
-};
+  };
+    console.log('Client connected');
+    ws.on('message', function incoming(newMessage) {
+      const parsedMessage = JSON.parse(newMessage);
+          //console.log(parsedMessage);
+          console.log(`User ${parsedMessage.username} said ${parsedMessage.content}`);
+          parsedMessage.id = uuidV1();
+    
+    switch (parsedMessage.message.type) {
+    case 'postMessage': parsedMessage.message.type = 'newMessage';
+    break;
+    case 'postNotification': parsedMessage.message.type = 'newNotification';
+    break;
+    }
+    
+          wss.broadcast(parsedMessage);
+        });
 
-ws.on('message', function incoming(newMessage) {
-    const parsedMessage = JSON.parse(newMessage);
-        //console.log(parsedMessage);
-        console.log(`User ${parsedMessage.username} said ${parsedMessage.content}`);
-        parsedMessage.id = uuidV1();
-
-switch (parsedMessage.message.type) {
-case 'postMessage': parsedMessage.message.type = 'newMessage';
-break;
-case 'postNotification': parsedMessage.message.type = 'newNotification';
-break;
-}
-
-        wss.broadcast(parsedMessage);
-        //console.log('parsedMessage is', parsedMessage);
-        //ws.send(JSON.stringify(parsedMessage));
-        //this.socket.send(JSON.stringify(newMessage));
-      });
+wss.clients.forEach(function each(client) {
+  client.send(wss.clients.size);
+  
 
   // Set up a callback for when a client closes the socket. This usually means they closed their browser.
-  ws.on('close', () => console.log('Client disconnected'));
+
+  client.on('close', () => {
+    console.log('Client disconnected');
+    wss.clients.forEach(function each(client) {
+      client.send(wss.clients.size);
+    });
+  });
+  })
+  //ws.on('close', () => console.log('Client disconnected'));
 });
