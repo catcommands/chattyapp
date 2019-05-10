@@ -5,18 +5,15 @@ const uuidV1 = require('uuid/v1'); //This generates a v1 UUID = universally uniq
 // Set the port to 3001
 const PORT = 3001;
 
-// Create a new express server
+// New express server
 const server = express()
   .use(express.static('public'))
   .listen(PORT, '0.0.0.0', 'localhost', () => console.log(`Listening on ${ PORT }`));
 
-  // Create the WebSockets server
+// WebSocket Server
 const wss = new SocketServer({ server });
 
 
-// Set up a callback that will run when a client connects to the server
-// When a client connects they are assigned a socket, represented by
-// the ws parameter in the callback.
 wss.on('connection', (ws) => {
   wss.broadcast = function broadcast(data) {
     wss.clients.forEach(function each(client) {
@@ -27,21 +24,18 @@ wss.on('connection', (ws) => {
           // Broadcast to everyone else.
     });
   };
-    console.log('Client connected');
+  console.log('Client connected');
     ws.on('message', function incoming(newMessage) {
       const parsedMessage = JSON.parse(newMessage);
-          //console.log(parsedMessage);
-          console.log(`User ${parsedMessage.username} said ${parsedMessage.content}`);
-          //parsedMessage.id = uuidV1();
+      console.log(`User ${parsedMessage.username} said ${parsedMessage.content}`);
     
     switch (parsedMessage.message.type) {
-    case 'postMessage': parsedMessage.message.type = 'newMessage';
-    break;
+      case 'postMessage': parsedMessage.message.type = 'newMessage';
+      break;
     case 'postNotification': parsedMessage.message.type = 'newNotification';
     break;
     }
-    
-          wss.broadcast(parsedMessage);
+    wss.broadcast(parsedMessage);
         });
 
 wss.clients.forEach(function each(client) {
@@ -56,6 +50,5 @@ wss.clients.forEach(function each(client) {
       client.send(wss.clients.size);
     });
   });
-  })
-  //ws.on('close', () => console.log('Client disconnected'));
+  });
 });
