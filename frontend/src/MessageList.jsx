@@ -3,7 +3,6 @@ import Message from './Message.jsx';
 
 class MessageList extends Component {
     render() {
-        console.log(this.props.messages);
         let messages = this.props.messages.map((message) => {
             if (message.type === 'newNotification') {
                 return (

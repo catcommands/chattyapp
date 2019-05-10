@@ -2,10 +2,6 @@ import React, {Component} from 'react';
 
 class ChatBar extends Component {
     render() {
-    
-            //let newValue = evt.target.value;
-            //this.props.addNewMessage
-        //}
         return (
             <div>
         <footer className="chatbar">
