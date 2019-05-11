@@ -1,5 +1,23 @@
+# To learn more about my projects, 
+please visit [My Profile](https://github.com/JeffShah)
+
+#About Chatty-App Project
+Chatty allows users to communicate with each other without having to register accounts. It uses React, a popular front-end library created and used heavily by Facebook as well as modern tools for Node including Webpack and Babel.
+- When any connected user sends a chat message, all connected users receive and display the message
+- When any connected user changes their name, all connected users are notified of the name change.
+- Every notification (messages or change of username) has a unique id which can be seen inside cmd.
+- Header will display the count of connected users
+- When the number of connected users changes, this count will be updated for all connected users.
 
 
+
+# Incognito Mode
+This ChattApp also works with incognito mode.
+
+# Project Organization
+I have organaized this project in two perspective folders to make it easier for users to understand how different files and folders work in their perspective ways: 
+- [Frontend](https://github.com/JeffShah/chattyapp/tree/master/frontend) 
+- [Backend](https://github.com/JeffShah/chattyapp/tree/master/backend)
 
 # React Boilerplate
 
@@ -39,9 +57,32 @@ This boilerplate project includes React ESLint configuration.
 npm run lint
 ```
 
-### Dependencies
+### Dependencies in alphabetical order:
 
-- React
-- Webpack
+- babel-core
 - [babel-loader](https://github.com/babel/babel-loader)
+- babel-preset-es2015
+- babel-preset-react
+- css-loader
+- express
+- node-sass
+- prettier
+- react
+- react-dom
+- sass-loader
+- sockjs-client
+- style-loader
+- webpack
 - [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+- webSocket
+- uuid
+
+For updated list of dependencies, [please click here](https://github.com/JeffShah/chattyapp/blob/master/frontend/package.json) and [here](https://github.com/JeffShah/chattyapp/blob/master/backend/chatty_server/package.json)
+
+
+## Screenshots:
+
+[Send message](https://github.com/JeffShah/chattyapp/blob/master/screenshots/sendmessage.png)
+[Change username](https://github.com/JeffShah/chattyapp/blob/master/screenshots/changeusername.png)
+[How many users online](https://github.com/JeffShah/chattyapp/blob/master/screenshots/howmanyusers.png)
+[Incognito mode](https://github.com/JeffShah/chattyapp/blob/master/screenshots/incognitomode.png)
