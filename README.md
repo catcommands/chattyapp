@@ -1,7 +1,7 @@
 # To learn more about my projects, 
-please visit [My Profile](https://github.com/JeffShah)
+Please visit [My Profile](https://github.com/JeffShah)
 
-#About Chatty-App Project
+# About Chatty-App Project
 Chatty allows users to communicate with each other without having to register accounts. It uses React, a popular front-end library created and used heavily by Facebook as well as modern tools for Node including Webpack and Babel.
 - When any connected user sends a chat message, all connected users receive and display the message
 - When any connected user changes their name, all connected users are notified of the name change.
@@ -82,7 +82,7 @@ For updated list of dependencies, [please click here](https://github.com/JeffSha
 
 ## Screenshots:
 
-[Send message](https://github.com/JeffShah/chattyapp/blob/master/screenshots/sendmessage.png)
-[Change username](https://github.com/JeffShah/chattyapp/blob/master/screenshots/changeusername.png)
-[How many users online](https://github.com/JeffShah/chattyapp/blob/master/screenshots/howmanyusers.png)
-[Incognito mode](https://github.com/JeffShah/chattyapp/blob/master/screenshots/incognitomode.png)
+![Send message](https://github.com/JeffShah/chattyapp/blob/master/screenshots/sendmessage.png)
+![Change username](https://github.com/JeffShah/chattyapp/blob/master/screenshots/changeusername.png)
+![How many users online](https://github.com/JeffShah/chattyapp/blob/master/screenshots/howmanyusers.png)
+![Incognito mode](https://github.com/JeffShah/chattyapp/blob/master/screenshots/incognitomode.png)
