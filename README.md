@@ -1,5 +1,5 @@
 # To learn more about my projects, 
-Please visit [My Profile](https://github.com/JeffShah)
+Please visit [My Profile](https://github.com/catcommands)
 
 # About Chatty-App Project
 Chatty allows users to communicate with each other without having to register accounts. It uses React, a popular front-end library created and used heavily by Facebook as well as modern tools for Node including Webpack and Babel.
@@ -16,8 +16,8 @@ This ChattApp also works with incognito mode.
 
 # Project Organization
 I have organaized this project in two perspective folders to make it easier for users to understand how different files and folders work in their perspective ways: 
-- [Frontend](https://github.com/JeffShah/chattyapp/tree/master/frontend) 
-- [Backend](https://github.com/JeffShah/chattyapp/tree/master/backend)
+- [Frontend](https://github.com/CatCommands/chattyapp/tree/master/frontend) 
+- [Backend](https://github.com/catcommands/chattyapp/tree/master/backend)
 
 # React Boilerplate
 
@@ -77,12 +77,12 @@ npm run lint
 - webSocket
 - uuid
 
-For updated list of dependencies, [please click here](https://github.com/JeffShah/chattyapp/blob/master/frontend/package.json) and [here](https://github.com/JeffShah/chattyapp/blob/master/backend/chatty_server/package.json)
+For updated list of dependencies, [please click here](https://github.com/catcommands/chattyapp/blob/master/frontend/package.json) and [here](https://github.com/catcommands/chattyapp/blob/master/backend/chatty_server/package.json)
 
 
 ## Screenshots:
 
-![Send message](https://github.com/JeffShah/chattyapp/blob/master/screenshots/sendmessage.png)
-![Change username](https://github.com/JeffShah/chattyapp/blob/master/screenshots/changeusername.png)
-![How many users online](https://github.com/JeffShah/chattyapp/blob/master/screenshots/howmanyusers.png)
-![Incognito mode](https://github.com/JeffShah/chattyapp/blob/master/screenshots/incognitomode.png)
+![Send message](https://github.com/catcommands/chattyapp/blob/master/screenshots/sendmessage.png)
+![Change username](https://github.com/catcommands/chattyapp/blob/master/screenshots/changeusername.png)
+![How many users online](https://github.com/catcommands/chattyapp/blob/master/screenshots/howmanyusers.png)
+![Incognito mode](https://github.com/catcommands/chattyapp/blob/master/screenshots/incognitomode.png)
