@@ -16,7 +16,7 @@ This ChattApp also works with incognito mode.
 
 # Project Organization
 I have organaized this project in two perspective folders to make it easier for users to understand how different files and folders work in their perspective ways: 
-- [Frontend](https://github.com/CatCommands/chattyapp/tree/master/frontend) 
+- [Frontend](https://github.com/catcommands/chattyapp/tree/master/frontend) 
 - [Backend](https://github.com/catcommands/chattyapp/tree/master/backend)
 
 # React Boilerplate
